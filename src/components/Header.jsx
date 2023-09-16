@@ -1,9 +1,9 @@
 const Header = () => {
   return (
-    <div className="w-full bg-indigo-400 h-20 flex items-center">
+    <div className="w-full bg-indigo-400 h-16 flex items-center">
       <div className="w-10/12 mx-auto flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-semibold text-white">cartMaster</h2>
+          <h2 className="text-2xl font-semibold text-white">cartMaster</h2>
         </div>
         <nav>
           <ul className="flex items-center gap-4">
