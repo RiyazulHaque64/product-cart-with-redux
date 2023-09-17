@@ -1,4 +1,4 @@
-import { BsTrash3Fill } from "react-icons/bs";
+import { FaXmark } from "react-icons/fa6";
 
 const CartItem = () => {
   return (
@@ -12,18 +12,22 @@ const CartItem = () => {
         <div>
           <h2>Name</h2>
           <p>Category</p>
-          <p>1200</p>
         </div>
       </div>
-      <div>
-        <span>-</span>
-        <span>2</span>
-        <span>+</span>
+      <div className="flex items-center gap-8">
+        <div>
+          <span>-</span>
+          <span className="mx-3">2</span>
+          <span>+</span>
+        </div>
+        <p>
+          <p>1200</p>
+        </p>
+        <p>BDT 12000</p>
+        <button>
+          <FaXmark />
+        </button>
       </div>
-      <p>BDT 12000</p>
-      <button>
-        <BsTrash3Fill />
-      </button>
     </div>
   );
 };
