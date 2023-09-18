@@ -16,19 +16,5 @@ const mans = [
   },
 ];
 
-const result = mans.find((man) => man.id === 2);
+const result = mans.sort((a, b) => b.id - a.id);
 console.log(result);
-
-const update = {
-  ...result,
-  age: result.age - 1,
-  quantity: 1,
-};
-
-console.log(update);
-const update2 = {
-  ...result,
-  age: result.age - 1,
-  quantity: update.quantity + 1,
-};
-console.log(update2);

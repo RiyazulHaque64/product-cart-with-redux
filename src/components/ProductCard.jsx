@@ -7,13 +7,14 @@ const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
 
   const addToCartHandler = (productInfo) => {
-    dispatch(addToCart(productInfo));
+    console.log(productInfo.id);
     dispatch(decreaseStock(productInfo.id));
+    dispatch(addToCart(productInfo));
   };
 
   return (
     <div className="border rounded">
-      <img className="h-64 mx-auto" src={imgUrl} alt="" />
+      <img className="h-64 sm:h-48 lg:h-40 mx-auto" src={imgUrl} alt="" />
       <div className="p-8">
         <h2 className="font-medium mb-2">{name}</h2>
 
@@ -32,8 +33,11 @@ const ProductCard = ({ product }) => {
         </p>
       </div>
       <button
-        className="bg-indigo-100 w-full py-1 text-indigo-500 font-semibold hover:text-indigo-600 transition-all duration-200"
+        className={`bg-indigo-100 w-full py-1 text-indigo-500 font-semibold hover:text-indigo-600 transition-all duration-200 ${
+          stock <= 0 ? "cursor-not-allowed" : "cursor-pointer"
+        }`}
         onClick={() => addToCartHandler(product)}
+        disabled={stock <= 0 ? true : false}
       >
         Add To Cart
       </button>

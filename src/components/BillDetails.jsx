@@ -1,4 +1,14 @@
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../redux/addToCart/actions";
+
 const BillDetails = () => {
+  const cartProducts = useSelector((state) => state.cartProducts);
+  const dispatch = useDispatch();
+  const subTotal = cartProducts.reduce(
+    (prevTotal, product) => prevTotal + product.totalPrice,
+    0
+  );
+
   return (
     <div>
       <div className="text-center bg-indigo-100 p-2">
@@ -10,7 +20,7 @@ const BillDetails = () => {
           <tbody>
             <tr>
               <td className="pr-12">Sub Total</td>
-              <td className="text-right">12000</td>
+              <td className="text-right">{subTotal}.00</td>
             </tr>
             <tr>
               <td>Discount</td>
@@ -22,13 +32,16 @@ const BillDetails = () => {
             </tr>
             <tr>
               <td className="font-semibold">Total</td>
-              <td className="text-right font-semibold">12000</td>
+              <td className="text-right font-semibold">{subTotal}.00</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div className="flex justify-center">
-        <button className="bg-indigo-100 px-4 py-1 text-indigo-500 font-semibold hover:text-indigo-600 transition-all duration-200">
+        <button
+          className="bg-indigo-100 px-4 py-1 text-indigo-500 font-semibold hover:text-indigo-600 transition-all duration-200"
+          onClick={() => dispatch(clearCart())}
+        >
           Place Order
         </button>
       </div>

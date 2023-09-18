@@ -1,4 +1,4 @@
-import { ADDPRODUCT, DECREASESTOCK } from "./actionTypes";
+import { ADDPRODUCT, DECREASESTOCK, INCREASESTOCK } from "./actionTypes";
 import initialState from "./initialState";
 
 const newIdGenerator = (state) => {
@@ -27,15 +27,32 @@ const addProductReducer = (state = initialState, action) => {
 
       if (isExists) {
         return [
-          ...remainingPrdouct,
           {
             ...isExists,
             stock: isExists.stock - 1,
           },
+          ...remainingPrdouct,
         ];
       }
       return [...state];
+    case INCREASESTOCK:
+      const targetProduct = state.find(
+        (product) => product.id === action.payload.productId
+      );
+      const remainingPrdouctInIncrase = state.filter(
+        (product) => product.id !== action.payload.productId
+      );
 
+      if (targetProduct) {
+        return [
+          {
+            ...targetProduct,
+            stock: targetProduct.stock + action.payload.quantity,
+          },
+          ...remainingPrdouctInIncrase,
+        ];
+      }
+      return [...state];
     default:
       return state;
   }

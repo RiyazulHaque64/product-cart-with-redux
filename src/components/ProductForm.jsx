@@ -24,7 +24,7 @@ const ProductForm = () => {
   };
 
   return (
-    <div className="w-5/12 shadow-lg">
+    <div className="w-full md:w-1/2 lg:w-5/12 shadow-lg">
       <h2 className="text-center font-semibold bg-indigo-100 text-gray-600 p-2">
         Add New Product
       </h2>
